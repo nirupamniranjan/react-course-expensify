@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Expense List Item 1`] = `
+<div>
+  <p>
+    Description:
+    beer
+     
+     
+    amount : 
+    125
+     
+     
+    createdAt : 
+    0
+      
+     
+    <Link
+      to="/edit/1"
+    >
+      Edit
+    </Link>
+  </p>
+</div>
+`;
