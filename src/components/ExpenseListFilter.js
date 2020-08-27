@@ -36,9 +36,7 @@ render(){
     <div>
     <input type = "text" defaultValue ={this.props.filters.text} onChange={
         this.onTextChange
-}
-        
-        />
+} />
 
         <select value={this.props.filters.sortBy} onChange={this.onSortChange}>
             <option value ="date">
@@ -83,4 +81,4 @@ const mapDispatchToProps=(dispatch)=>({
 
 });
 
-export default connect(mapStateToProps,mapStateToProps)(ExpenseListFilters)
+export default connect(mapStateToProps,mapDispatchToProps)(ExpenseListFilters)
