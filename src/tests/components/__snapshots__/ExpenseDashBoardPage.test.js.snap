@@ -4,5 +4,6 @@ exports[`To Test Expense DashBoard Page 1`] = `
 <div>
   <Connect(ExpenseListFilters) />
   <Connect(ExpenseList) />
+  <Connect(ExpenseSummary) />
 </div>
 `;
