@@ -8,7 +8,7 @@ let onSubmit , history, wrapper;
 beforeEach(()=>{
     onSubmit=jest.fn();
     history={push:jest.fn()};
-    wrapper = shallow(<EditExpensePage expense ={expenses[1]}editExpense={onSubmit} startRemoveExpense={onSubmit} history={history}/>)
+    wrapper = shallow(<EditExpensePage expense ={expenses[1]} startEditExpense={onSubmit} startRemoveExpense={onSubmit} history={history}/>)
 });
 
 test('should render edit expense page',()=>{
