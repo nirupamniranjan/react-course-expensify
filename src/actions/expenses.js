@@ -8,7 +8,10 @@ export const addExpense = (expense) =>({
 
 });
 
-export const startAddExpense = (expenseData={})=>{
+export const startAddExpense = (expenseData={description :'',
+note:'',
+amount:0,
+createdAt:0})=>{
 
     return (dispatch)=>{
         const {description ='',
@@ -21,7 +24,7 @@ export const startAddExpense = (expenseData={})=>{
        const submitData=database.ref('expenses').push(expenseData);
         
        return submitData.then((ref)=>{
-           console.log(ref)
+          
             dispatch(addExpense({
                 id:ref.key,
                 ...expense

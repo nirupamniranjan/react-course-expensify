@@ -4,9 +4,26 @@ import expenses from '../Fixtures/expenses'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import database from '../../firebase/firebase'
-import { act } from 'react-test-renderer'
+
 
 const createMockStore = configureStore([thunk])
+
+beforeEach((done)=>{
+    const expensesData={};
+    expenses.forEach(({
+        id,
+        description,
+        note,
+        amount,
+        createdAt
+    })=>{
+        expensesData[id]={description,note,amount,createdAt}
+    });
+
+    database.ref('expenses').set(expensesData).then(
+       ()=>{done();})
+    
+})
 
 test('should setup remove expense action object',()=>{
 
@@ -74,12 +91,14 @@ test('should setup add expense to database and store',(done)=>{
         console.log(value);
         return value;
     }).then((snapshot) =>{
-        console.log(snapshot.val())
+        
         expect(snapshot.val()).toEqual(expenseData);
+     
+        done();
+
       }).catch((e)=>{
         console.log('error has occured',e)
       });
-      done();
 });
 
 
@@ -90,7 +109,7 @@ test('should setup add expenses to store and database with default',(done)=>{
     amount:0,
     createdAt:0};
 
-    store.dispatch(startAddExpense({})).then(()=>{
+    store.dispatch(startAddExpense()).then(()=>{
         const actions = store.getActions()
         expect(actions[0]).toEqual({
             type:'ADD_EXPENSE',
@@ -104,8 +123,9 @@ test('should setup add expenses to store and database with default',(done)=>{
         
     }).then((snapshot) =>{
         expect(snapshot.val()).toEqual(expenseData);
+        done();
       });
-      done();
+      
 
 });
 // test('should setup add expense action object with default values',()=>{
