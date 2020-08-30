@@ -97,7 +97,7 @@ test('should call onSubmit prop for valid form subission',()=>{
 test('should find the value on Date Change',()=>{
     const now = moment();
     const wrapper = shallow(<ExpenseForm/>);
-    console.log(wrapper)
+   // console.log(wrapper)
     wrapper.find(SingleDatePicker).prop('onDateChange')(now);
     expect(wrapper.state('createdAt')).toEqual(now)
 });
